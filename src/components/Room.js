@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 export default function Room({ room }) {
   const defaultImg = "https://via.placeholder.com/1280x720.png";
@@ -16,6 +17,16 @@ export default function Room({ room }) {
           Features
         </Link>
       </div>
+      <p className="room-info">{name}</p>
     </article>
   );
 }
+
+Room.propTypes = {
+  room: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    slug: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    images: PropTypes.arrayOf(PropTypes.string).isRequired
+  })
+};
